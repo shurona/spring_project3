@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shurona.mappers.board">
+
+	<!-- 게시물 목록 -->
+	<select id ="list" resultType="com.shurona.showtem.board.BoardVO">
+	select
+		id, RANK, BF_Sword, Giant_Belt, Recurve_Bow, Spatula, Chain_Vest,
+		Large_Rod, Tear_OF_THE_Goddess,Sparring_Gloves,Negatron_Cloak, Johab
+	from itemlist		
+	</select>
+	
+	<!-- 게시물 총 갯수 -->
+	<select id = "count" resultType="int">
+		select count(id) from itemlist
+	</select>
+	
+	<!-- 게시물 검색 후 갯수 -->
+	<select id="searchCount" parameterType="hashMap" resultType="int">
+		select count(id) from itemlist
+		where Giant_Belt >= #{beltNum} and BF_Sword >= #{swordNum} and Recurve_Bow >= #{recurveNum} and Spatula >= #{spatulaNum}
+		and Chain_Vest >= #{chainNum} and Large_Rod >= #{largeNum} and Tear_OF_THE_Goddess >= #{tearNum} 
+		and Sparring_Gloves >= #{glovesNum} and Negatron_Cloak >= #{cloakNum}
+	</select>
+	
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="com.shurona.showtem.board.BoardVO">
+		select
+			id, RANK, BF_Sword, Giant_Belt, Recurve_Bow, Spatula, Chain_Vest,
+			Large_Rod, Tear_OF_THE_Goddess,Sparring_Gloves,Negatron_Cloak, Johab
+		from itemlist
+		order by id
+		limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 게시물 목록 + 검색 -->
+	<select id = "listPageSearch" parameterType="hashMap" resultType="com.shurona.showtem.board.BoardVO">
+		select 
+			id, RANK, BF_Sword, Giant_Belt, Recurve_Bow, Spatula, Chain_Vest,
+			Large_Rod, Tear_OF_THE_Goddess,Sparring_Gloves,Negatron_Cloak, Johab
+		from itemlist
+		where Giant_Belt >= #{beltNum} and BF_Sword >= #{swordNum} and Recurve_Bow >= #{recurveNum} and Spatula >= #{spatulaNum}
+		and Chain_Vest >= #{chainNum} and Large_Rod >= #{largeNum} and Tear_OF_THE_Goddess >= #{tearNum} 
+		and Sparring_Gloves >= #{glovesNum} and Negatron_Cloak >= #{cloakNum}
+		order by id
+		limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 조합별 갯수 검색 -->
+	<select id="groupSearch" parameterType="hashMap" resultType="com.shurona.showtem.board.GroupVO">
+		SELECT johab as johabname, COUNT(id) as johabcount from itemlist
+		where Giant_Belt >= #{beltNum} and BF_Sword >= #{swordNum} and Recurve_Bow >= #{recurveNum} and Spatula >= #{spatulaNum}
+		and Chain_Vest >= #{chainNum} and Large_Rod >= #{largeNum} and Tear_OF_THE_Goddess >= #{tearNum} 
+		and Sparring_Gloves >= #{glovesNum} and Negatron_Cloak >= #{cloakNum}
+		GROUP BY johab
+	</select>
+	
+	
+</mapper>
