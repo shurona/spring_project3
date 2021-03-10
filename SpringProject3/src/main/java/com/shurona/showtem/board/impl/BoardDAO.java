@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.shurona.showtem.board.BoardVO;
 import com.shurona.showtem.board.GroupVO;
+import com.shurona.showtem.board.SebuVO;
 
 @Repository
 public class BoardDAO {
@@ -93,5 +94,53 @@ public class BoardDAO {
 			data.put("spatulaNum", spatulaNum);		
 				
 		return mybatis.selectList(namespace+".groupSearch",data);
+	}
+	
+	public List<GroupVO> simGroupSearch(String beltnum, String swordNum,
+			String recurveNum, String chainNum, String largeNum, String tearNum, String glovesNum,
+			String cloakNum, String spatulaNum) throws Exception{
+		
+			HashMap<String, String> data = new HashMap<String, String>();
+			data.put("beltNum", beltnum);
+			data.put("swordNum", swordNum);
+			data.put("beltNum", beltnum);
+			data.put("recurveNum", recurveNum);
+			data.put("chainNum", chainNum);
+			data.put("largeNum", largeNum);
+			data.put("tearNum", tearNum);
+			data.put("glovesNum", glovesNum);
+			data.put("cloakNum", cloakNum);
+			data.put("spatulaNum", spatulaNum);	
+		return mybatis.selectList(namespace +".simGroupSearch", data);
+	}
+	
+	public List<BoardVO> simJohab(String beltnum, String swordNum,
+			String recurveNum, String chainNum, String largeNum, String tearNum, String glovesNum,
+			String cloakNum, String spatulaNum, String johab) throws Exception{
+		
+			HashMap<String, String> data = new HashMap<String, String>();
+			data.put("beltNum", beltnum);
+			data.put("swordNum", swordNum);
+			data.put("beltNum", beltnum);
+			data.put("recurveNum", recurveNum);
+			data.put("chainNum", chainNum);
+			data.put("largeNum", largeNum);
+			data.put("tearNum", tearNum);
+			data.put("glovesNum", glovesNum);
+			data.put("cloakNum", cloakNum);
+			data.put("spatulaNum", spatulaNum);	
+			data.put("johab", johab);
+			
+			return mybatis.selectList(namespace +".simJohab", data);
+		
+	}
+	
+	public SebuVO sebuJohab(int id) throws Exception {
+		
+		
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("id", id);
+		
+		return mybatis.selectOne(namespace+".sebuJohab", data);
 	}
 }

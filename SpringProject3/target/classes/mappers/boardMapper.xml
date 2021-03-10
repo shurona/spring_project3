@@ -57,5 +57,30 @@
 		GROUP BY johab
 	</select>
 	
+	<!-- 조합에 별로 유사도 평균 및 갯수를 보여줌 -->
+	<select id = "simGroupSearch" parameterType="hashMap" resultType="com.shurona.showtem.board.GroupVO">
+		SELECT johab as  johabname, COUNT(id) as johabcount, round(avg(sim),2) as simgroup FROM itemlist 
+		where Giant_Belt >= #{beltNum} and BF_Sword >= #{swordNum} and Recurve_Bow >= #{recurveNum} and Spatula >= #{spatulaNum}
+		and Chain_Vest >= #{chainNum} and Large_Rod >= #{largeNum} and Tear_OF_THE_Goddess >= #{tearNum} 
+		and Sparring_Gloves >= #{glovesNum} and Negatron_Cloak >= #{cloakNum}
+		GROUP BY johab
+	</select>
+	
+	<!-- 현재 보유하고 있는 템을 제외하고 필요한 템을 보여줌  -->
+	<select id="simJohab" parameterType="hashMap" resultType="com.shurona.showtem.board.BoardVO">
+		select id, RANK, BF_Sword, Giant_Belt, Recurve_Bow, Spatula, Chain_Vest,
+			Large_Rod, Tear_OF_THE_Goddess,Sparring_Gloves,Negatron_Cloak, sim
+		FROM itemlist
+		WHERE johab = #{johab} and Giant_Belt >= #{beltNum} and BF_Sword >= #{swordNum} and Recurve_Bow >= #{recurveNum} and Spatula >= #{spatulaNum}
+		and Chain_Vest >= #{chainNum} and Large_Rod >= #{largeNum} and Tear_OF_THE_Goddess >= #{tearNum} 
+		and Sparring_Gloves >= #{glovesNum} and Negatron_Cloak >= #{cloakNum}
+		order by rank
+	</select>
+	
+	<!--  세부 조합 보여주기 -->
+	<select id="sebuJohab" parameterType="hashMap" resultType="com.shurona.showtem.board.SebuVO">
+		SELECT id, detailed, useditem, usedchamp, smallitem, johab FROM sebu WHERE id = #{id}
+	</select>
+	
 	
 </mapper>

@@ -32,6 +32,8 @@ public class BoardVO {
 	private int sparring_gloves;
 	private int negatron_cloak;
 	private String johab;
+	private int sim;
+
 	public int getId() {
 		return id;
 	}
@@ -104,6 +106,12 @@ public class BoardVO {
 	}
 	public void setJohab(String johab) {
 		this.johab = johab;
+	}
+	public int getSim() {
+		return sim;
+	}
+	public void setSim(int sim) {
+		this.sim = sim;
 	}
 	
 	

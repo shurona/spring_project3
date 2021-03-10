@@ -14,6 +14,7 @@
 <p><a href = "/board/list">게시물 목록</a></p>
 <p><a href = "/board/listPage?num=1">게시물 목록(아래 페이지)</a></p>
 <p><a href = "/board/listPageSearch?num=1">게시물 목록(검색 가능)</a></p>
+<p><a href = "/board/listjohab">원하는 조합 찾기</a></p>
 
 </body>
 </html>

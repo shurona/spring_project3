@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.shurona.showtem.board.BoardVO;
 import com.shurona.showtem.board.GroupVO;
 import com.shurona.showtem.board.Page;
+import com.shurona.showtem.board.SebuVO;
 import com.shurona.showtem.board.impl.BoardService;
 
 @Controller
@@ -64,7 +65,6 @@ private BoardService service;
   
 	 Page page = new Page();
 	 page.setNum(num);
-	 page.setCount(service.searchCount(sword, belt, recurve, chain, large, tear, gloves, cloak, spatula));
 	 page.setBelt(belt);
 	 page.setSword(sword);
 	 page.setRecurve(recurve);
@@ -74,6 +74,7 @@ private BoardService service;
 	 page.setTear(tear);
 	 page.setGloves(gloves);
 	 page.setCloak(cloak);
+	 page.setCount(service.searchCount(sword, belt, recurve, chain, large, tear, gloves, cloak, spatula));
 	 
 	 List<BoardVO> list = null; 
 	 list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), belt, sword,
@@ -102,5 +103,83 @@ public void getJohabGroup(Model model,
 	model.addAttribute("list", list);
 	
 }
-		 
+
+@RequestMapping(value = "/listjohab", method = RequestMethod.GET)
+public void getListjohab(Model model,
+		 @RequestParam(value = "belt", required=false, defaultValue = "0" ) String belt,
+		 @RequestParam(value = "sword", required=false, defaultValue = "0" ) String sword,
+		 @RequestParam(value = "recurve", required=false, defaultValue = "0" ) String recurve,
+		 @RequestParam(value = "spatula", required=false, defaultValue = "0" ) String spatula,
+		 @RequestParam(value = "chain", required=false, defaultValue = "0" ) String chain,
+		 @RequestParam(value = "large", required=false, defaultValue = "0" ) String large,
+		 @RequestParam(value = "tear", required=false, defaultValue = "0" ) String tear,
+		 @RequestParam(value = "gloves", required=false, defaultValue = "0" ) String gloves,
+		 @RequestParam(value = "cloak", required=false, defaultValue = "0" ) String cloak
+		 ) throws Exception{
+	
+	List<GroupVO> list = null;
+	list = service.simGroupSearch(belt, sword, recurve, chain, large, tear, gloves, cloak, spatula);
+	
+	 Page page = new Page();
+
+	 page.setBelt(belt);
+	 page.setSword(sword);
+	 page.setRecurve(recurve);
+	 page.setSpatula(spatula);
+	 page.setChain(chain);
+	 page.setLarge(large);
+	 page.setTear(tear);
+	 page.setGloves(gloves);
+	 page.setCloak(cloak);
+	
+	 
+	model.addAttribute("page",page);
+	model.addAttribute("list",list);
+	
+}
+
+
+@RequestMapping(value = "/simJohab", method = RequestMethod.GET)
+public void getSimJohab(Model model,
+		 @RequestParam(value = "belt", required=false, defaultValue = "0" ) String belt,
+		 @RequestParam(value = "sword", required=false, defaultValue = "0" ) String sword,
+		 @RequestParam(value = "recurve", required=false, defaultValue = "0" ) String recurve,
+		 @RequestParam(value = "spatula", required=false, defaultValue = "0" ) String spatula,
+		 @RequestParam(value = "chain", required=false, defaultValue = "0" ) String chain,
+		 @RequestParam(value = "large", required=false, defaultValue = "0" ) String large,
+		 @RequestParam(value = "tear", required=false, defaultValue = "0" ) String tear,
+		 @RequestParam(value = "gloves", required=false, defaultValue = "0" ) String gloves,
+		 @RequestParam(value = "cloak", required=false, defaultValue = "0" ) String cloak,
+		 @RequestParam(value = "johab", required=false, defaultValue = "0" ) String johab
+		 ) throws Exception{
+	
+	
+	 Page oldpage = new Page();
+	 BoardVO board = new BoardVO();
+	 List<BoardVO> newboard = null;
+	 newboard = service.simJohab(belt, sword, recurve, chain, large, tear, gloves, cloak, spatula, johab);
+	 
+	 oldpage.setBelt(belt);
+	 oldpage.setSword(sword);
+	 oldpage.setRecurve(recurve);
+	 oldpage.setSpatula(spatula);
+	 oldpage.setChain(chain);
+	 oldpage.setLarge(large);
+	 oldpage.setTear(tear);
+	 oldpage.setGloves(gloves);
+	 oldpage.setCloak(cloak);
+	 board.setJohab(johab);
+	
+	 model.addAttribute("oldpage", oldpage);
+	 model.addAttribute("board",board);
+	 model.addAttribute("newboard", newboard);
+	}
+
+@RequestMapping(value="/sebujohab", method = RequestMethod.GET)
+public void getSebuJohab(Model model, @RequestParam("id") int id) throws Exception{
+	SebuVO sebu = null;
+	sebu = service.sebuJohab(id);
+	model.addAttribute("sebu",sebu);
+}
+
 }

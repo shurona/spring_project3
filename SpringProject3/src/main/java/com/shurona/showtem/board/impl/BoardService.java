@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.shurona.showtem.board.BoardVO;
 import com.shurona.showtem.board.GroupVO;
+import com.shurona.showtem.board.SebuVO;
 
 @Service
 public class BoardService {
@@ -45,5 +46,21 @@ public class BoardService {
 			String recurveNum, String chainNum, String largeNum, String tearNum, String glovesNum,
 			String cloakNum, String spatulaNum) throws Exception{
 		return dao.groupSearch(beltnum, swordNum, recurveNum, chainNum, largeNum, tearNum, glovesNum, cloakNum, spatulaNum);
+	}
+	
+	public List<GroupVO> simGroupSearch(String beltnum, String swordNum,
+			String recurveNum, String chainNum, String largeNum, String tearNum, String glovesNum,
+			String cloakNum, String spatulaNum) throws Exception{
+		return dao.simGroupSearch(beltnum, swordNum, recurveNum, chainNum, largeNum, tearNum, glovesNum, cloakNum, spatulaNum);
+	}
+	
+	public List<BoardVO> simJohab(String beltnum, String swordNum,
+			String recurveNum, String chainNum, String largeNum, String tearNum, String glovesNum,
+			String cloakNum, String spatulaNum, String johab) throws Exception{
+		return dao.simJohab(beltnum, swordNum, recurveNum, chainNum, largeNum, tearNum, glovesNum, cloakNum, spatulaNum, johab);
+	}
+	
+	public SebuVO sebuJohab(int id) throws Exception {
+		return dao.sebuJohab(id);
 	}
 }
