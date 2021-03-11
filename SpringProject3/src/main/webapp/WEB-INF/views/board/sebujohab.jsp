@@ -9,7 +9,8 @@
 </head>
 <body>
 
-	<p>현재 조합 : ${sebu.johab}</p>
+	<p>현재 조합 : ${sebu.johab}  아이디 : ${sebu.id}</p>
+	
 	<table>
 		<thead>
 			<tr>

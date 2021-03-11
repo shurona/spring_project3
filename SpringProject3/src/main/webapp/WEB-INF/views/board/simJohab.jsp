@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +32,57 @@
 			</tr>
 		</thead>
 		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<button type="button" class = "btm_img" id="bf_button">	
+						<img src="<spring:url value='/resources/img/bf.png'/>">
+					</button>
+				</td>
+				<td>
+					<button type="button" class = "btm_img" id="belt_button">	
+						<img src="<spring:url value='/resources/img/belt.png'/>">
+					</button>
+				</td>
+				<td>
+					<button type="button" class = "btm_img" id="bow_button">	
+						<img src="<spring:url value='/resources/img/bow.png'/>">
+					</button>
+				</td>
+				<td>
+					<button type="button" class = "btm_img" id="spatula_button">	
+						<img src="<spring:url value='/resources/img/Spatula.png'/>">
+					</button>
+				</td>
+				<td>
+					<button type="button" class = "btm_img" id="vest_button">	
+						<img src="<spring:url value='/resources/img/1031.png'/>">
+					</button>
+				</td>
+				<td>
+					<button type="button" class = "btm_img" id="rod_button">	
+						<img src="<spring:url value='/resources/img/Rod.png'/>">
+					</button>
+				</td>
+				<td>
+					<button type="button" class = "btm_img" id="tear_button">	
+						<img src="<spring:url value='/resources/img/tear.png'/>">
+					</button>
+				</td>
+				<td>
+					<button type="button" class = "btm_img" id="gloves_button">	
+						<img src="<spring:url value='/resources/img/BrawlersGloves.png'/>">
+					</button>
+				</td>				
+				<td>
+					<button type="button" class = "btm_img" id="cloak_button">	
+						<img src="<spring:url value='/resources/img/cloak.png'/>">
+					</button>
+				</td>				
+				
+			</tr>
+		
 			<c:forEach items="${newboard}" var="newboard" varStatus="status">
 			
 		  		<tr>
@@ -51,6 +103,26 @@
 		  </c:forEach>
 		</tbody>
 	</table>
+	
+	<script>
+		document.getElementById("bf_button").onclick = function(){
+			johab = '${board.getJohab()}';
+			let swordnum = ${oldpage.getSword()}+1;
+			location.href = "/board/simJohab?&sword="+swordnum+"&belt="+${oldpage.getBelt()}+
+			  "&recurve="+${oldpage.getRecurve()} + "&spatula="+${oldpage.getSpatula()}+
+			  "&chain="+${oldpage.getChain()}+"&large="+${oldpage.getLarge()}
+			  +"&tear="+${oldpage.getTear()}+"&gloves="+${oldpage.getGloves()}+"&cloak="+${oldpage.getCloak()}
+			  +"&johab="+johab;
+		}
+		document.getElementById("belt_button").onclick = function(){
+			let beltnum = ${oldpage.getBelt()}+1;
+			location.href = "/board/simJohab?&sword="+${oldpage.getSword()}+"&belt="+beltnum+
+			  "&recurve="+${oldpage.getRecurve()} + "&spatula="+${oldpage.getSpatula()}+
+			  "&chain="+${oldpage.getChain()}+"&large="+${oldpage.getLarge()}
+			  +"&tear="+${oldpage.getTear()}+"&gloves="+${oldpage.getGloves()}+"&cloak="+${oldpage.getCloak()}
+			  +"&johab="+'${board.getJohab()}';
+		}
+	</script>
 	
 </body>
 </html>
