@@ -121,6 +121,62 @@
 			  "&chain="+${oldpage.getChain()}+"&large="+${oldpage.getLarge()}
 			  +"&tear="+${oldpage.getTear()}+"&gloves="+${oldpage.getGloves()}+"&cloak="+${oldpage.getCloak()}
 			  +"&johab="+'${board.getJohab()}';
+		}		
+		document.getElementById("bow_button").onclick = function(){
+			let bownum = ${oldpage.getRecurve()}+1;
+			location.href = "/board/simJohab?&sword="+${oldpage.getSword()}+"&belt="+${oldpage.getBelt()}+
+			  "&recurve="+bownum + "&spatula="+${oldpage.getSpatula()}+
+			  "&chain="+${oldpage.getChain()}+"&large="+${oldpage.getLarge()}
+			  +"&tear="+${oldpage.getTear()}+"&gloves="+${oldpage.getGloves()}+"&cloak="+${oldpage.getCloak()}
+			  +"&johab="+'${board.getJohab()}';
+		}
+		document.getElementById("spatula_button").onclick = function(){
+			let spanum = ${oldpage.getSpatula()}+1;
+			location.href = "/board/simJohab?&sword="+${oldpage.getSword()}+"&belt="+${oldpage.getBelt()}+
+			  "&recurve="+${oldpage.getRecurve()} + "&spatula="+spanum+
+			  "&chain="+${oldpage.getChain()}+"&large="+${oldpage.getLarge()}
+			  +"&tear="+${oldpage.getTear()}+"&gloves="+${oldpage.getGloves()}+"&cloak="+${oldpage.getCloak()}
+			  +"&johab="+'${board.getJohab()}';
+		}
+		document.getElementById("vest_button").onclick = function(){
+			let chain = ${oldpage.getChain()}+1;
+			location.href = "/board/simJohab?&sword="+${oldpage.getSword()}+"&belt="+${oldpage.getBelt()}+
+			  "&recurve="+${oldpage.getRecurve()} + "&spatula="+spanum+
+			  "&chain="+chain+"&large="+${oldpage.getLarge()}
+			  +"&tear="+${oldpage.getTear()}+"&gloves="+${oldpage.getGloves()}+"&cloak="+${oldpage.getCloak()}
+			  +"&johab="+'${board.getJohab()}';
+		}
+		document.getElementById("rod_button").onclick = function(){
+			let large = ${oldpage.getLarge()}+1;
+			location.href = "/board/simJohab?&sword="+${oldpage.getSword()}+"&belt="+${oldpage.getBelt()}+
+			  "&recurve="+${oldpage.getRecurve()} + "&spatula="+${oldpage.getSpatula()}+
+			  "&chain="+${oldpage.getChain()}+"&large="+large
+			  +"&tear="+${oldpage.getTear()}+"&gloves="+${oldpage.getGloves()}+"&cloak="+${oldpage.getCloak()}
+			  +"&johab="+'${board.getJohab()}';
+		}
+		document.getElementById("tear_button").onclick = function(){
+			let tear = ${oldpage.getTear()}+1;
+			location.href = "/board/simJohab?&sword="+${oldpage.getSword()}+"&belt="+${oldpage.getBelt()}+
+			  "&recurve="+${oldpage.getRecurve()} + "&spatula="+${oldpage.getSpatula()}+
+			  "&chain="+${oldpage.getChain()}+"&large="+${oldpage.getLarge()}
+			  +"&tear="+tear+"&gloves="+${oldpage.getGloves()}+"&cloak="+${oldpage.getCloak()}
+			  +"&johab="+'${board.getJohab()}';
+		}
+		document.getElementById("gloves_button").onclick = function(){
+			let gloves = ${oldpage.getGloves()}+1;
+			location.href = "/board/simJohab?&sword="+${oldpage.getSword()}+"&belt="+${oldpage.getBelt()}+
+			  "&recurve="+${oldpage.getRecurve()} + "&spatula="+${oldpage.getSpatula()}+
+			  "&chain="+${oldpage.getChain()}+"&large="+${oldpage.getLarge()}
+			  +"&tear="+${oldpage.getTear()}+"&gloves="+gloves+"&cloak="+${oldpage.getCloak()}
+			  +"&johab="+'${board.getJohab()}';
+		}
+		document.getElementById("cloak_button").onclick = function(){
+			let cloak = ${oldpage.getCloak()}+1;
+			location.href = "/board/simJohab?&sword="+${oldpage.getSword()}+"&belt="+${oldpage.getBelt()}+
+			  "&recurve="+${oldpage.getRecurve()} + "&spatula="+${oldpage.getSpatula()}+
+			  "&chain="+${oldpage.getChain()}+"&large="+${oldpage.getLarge()}
+			  +"&tear="+${oldpage.getTear()}+"&gloves="+${oldpage.getGloves()}+"&cloak="+cloak
+			  +"&johab="+'${board.getJohab()}';
 		}
 	</script>
 	
